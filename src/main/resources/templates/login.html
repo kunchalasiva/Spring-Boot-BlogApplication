@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.com">
 
 <head>
     <meta charset="UTF-8">
@@ -38,15 +38,16 @@
                         <h3 class="text-center fw-bold"><span class="bi bi-person-fill"></span>User Login</h3>
                     </div>
                     <div class="card-body">
-                        <form action="#" method="post">
+                        <form action="login" method="post" th:object="${Login}">
 
                             <dl>
-                                <dt>Username</dt>
-                                <dd><input type="text" name="uname" id="uname" class="form-control"></dd>
+                                <dt>Email</dt>
+                                <dd><input type="email" th:field="*{userEmail}" placeholder="enter your email" id="uname" class="form-control"></dd>
                                 <dd><span id="userError"></span></dd>
                                 <dt>Password</dt>
-                                <dd><input type="password" name="pwd" id="pwd" class="form-control"></dd>
-                                <span id="passwordError"></span>
+                                <dd><input type="password" th:field="*{userPassword}" placeholder="enter your password" id="pwd" class="form-control"></dd>
+                                <dd><span id="passwordError"></span></dd>
+                               	<dd><span th:text="${result}" class="text-danger"></span></dd>
                                 <dd class="text-center mt-3"><button class="btn btn-warning w-100 ">Login</button></dd>
                             </dl>
                         </form>

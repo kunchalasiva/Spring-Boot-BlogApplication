@@ -1,6 +1,9 @@
 package com.nt.entity;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -27,6 +30,9 @@ public class Post {
 	private String description;
 	
 	private String content;
+	
+	@CreationTimestamp
+	private LocalDate creation;
 	
 	@OneToMany(mappedBy = "post",cascade = CascadeType.REMOVE)
 	private List<Comment> comments;
