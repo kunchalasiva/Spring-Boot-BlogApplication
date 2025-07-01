@@ -1,7 +1,11 @@
 package com.nt.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.nt.binding.LoginForm;
@@ -59,15 +63,24 @@ public class UserServiceImple implements UserService {
 	@Override
 	public String addBlogPost(PostForm form) {
 		Post post = new Post();
+		//use the repository
+		UserRegistration user=userRepo.findById(form.getUser()).orElse(null);
 		BeanUtils.copyProperties(form, post);
-		
 		// get the userId
-		post.setUser(form.getUser());
+		post.setUser(user);
 		
 		// use the repository
 		postRepo.save(post);
 		
 		return "Post Added";
+	}
+	@Override
+	public List<Post> getAllPosts() {
+		// based on the login in user posts we need to retrieve all posts
+		 Integer user=(Integer)session.getAttribute("UserId");
+		 // use the postRepo
+		  UserRegistration users=userRepo.findById(user).orElse(null);
+		  return postRepo.findByUser(users);	
 	}
 
 }

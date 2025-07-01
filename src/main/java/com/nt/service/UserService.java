@@ -1,5 +1,7 @@
 package com.nt.service;
 
+import java.util.List;
+
 import com.nt.binding.LoginForm;
 import com.nt.binding.PostForm;
 import com.nt.binding.RegisterForm;
@@ -12,4 +14,6 @@ public interface UserService {
 	public abstract String loginUser(LoginForm form);
 	
 	public abstract String addBlogPost(PostForm form);
+	
+	public abstract List<Post> getAllPosts();
 }

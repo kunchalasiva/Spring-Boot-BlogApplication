@@ -10,6 +10,6 @@ public class PostForm {
 	private String title;
 	private String description;
 	private String content;
-	private UserRegistration user;
+	private Integer user;
 
 }

@@ -48,7 +48,7 @@
               </dd>
               <dt>Context</dt>
               <dd><textarea th:field="*{content}" id="" placeholder="provide brief blog information" class="form-control"></textarea></dd>
-           	<dd><span th:text="message" class="text-success"></span></dd>
+           	<dd><span th:text="${message}" class="text-success"></span></dd>
             </dl>
               <button  type="submit" class="btn btn-success text-light fw-bold">Submit</button>
             
